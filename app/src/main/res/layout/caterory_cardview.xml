@@ -24,8 +24,8 @@
         android:padding="20dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        android:text="Быть в тонусе"
+        android:textColor="@color/black"
+        android:text="Азиатская кухня"
         app:layout_constraintBottom_toBottomOf="@+id/item_library_image"
         app:layout_constraintStart_toStartOf="parent" />
 
