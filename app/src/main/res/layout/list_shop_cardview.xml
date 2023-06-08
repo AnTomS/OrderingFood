@@ -53,6 +53,7 @@
 
         <!-- Блок с кнопками "-" и "+" -->
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/rounded_gray_background"
             android:id="@+id/buttonLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

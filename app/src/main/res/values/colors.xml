@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="for_icon_gray">#A5A9B2</color>
     <color name="for_icon_blue">#3364E0</color>
+    <color name="for_icon_add_delete">#EFEEEC</color>
 </resources>

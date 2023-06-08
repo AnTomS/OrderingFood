@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Состояние кнопки при нажатии -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@drawable/rounded_blue_background" /> <!-- Цвет фона при нажатии -->
+        </shape>
+        <color android:color="@color/white" /> <!-- Цвет текста при нажатии -->
+    </item>
+    <!-- Состояние кнопки по умолчанию -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@drawable/rounded_gray_background" /> <!-- Цвет фона по умолчанию -->
+        </shape>
+        <color android:color="@color/black" /> <!-- Цвет текста по умолчанию -->
+    </item>
+</selector>
