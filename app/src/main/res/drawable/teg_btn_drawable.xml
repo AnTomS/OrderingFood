@@ -3,15 +3,15 @@
     <!-- Состояние кнопки при нажатии -->
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <solid android:color="@drawable/rounded_blue_background" /> <!-- Цвет фона при нажатии -->
+            <solid android:color="@drawable/rounded_blue_background" />
         </shape>
-        <color android:color="@color/white" /> <!-- Цвет текста при нажатии -->
+        <color android:color="@color/white" />
     </item>
     <!-- Состояние кнопки по умолчанию -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@drawable/rounded_gray_background" /> <!-- Цвет фона по умолчанию -->
+            <solid android:color="@drawable/rounded_gray_background" />
         </shape>
-        <color android:color="@color/black" /> <!-- Цвет текста по умолчанию -->
+        <color android:color="@color/black" />
     </item>
 </selector>
