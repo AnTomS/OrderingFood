@@ -1,4 +1,4 @@
-package com.example.orderingfood.model
+package com.example.data.model
 
 data class Dish(
     val id: Int,

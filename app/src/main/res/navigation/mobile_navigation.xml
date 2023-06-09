@@ -12,9 +12,9 @@
         android:label="MainActivity" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.orderingfood.MainFragment"
+        android:name="com.example.orderingfood.ui.categories.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_shopFragment"
             app:destination="@id/shopFragment" />
@@ -24,20 +24,38 @@
         <action
             android:id="@+id/action_mainFragment_to_personFragment"
             app:destination="@id/personFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dishesFragment"
+            app:destination="@id/dishesFragment" />
     </fragment>
     <fragment
         android:id="@+id/personFragment"
-        android:name="com.example.orderingfood.PersonFragment"
+        android:name="com.example.orderingfood.ui.PersonFragment"
         android:label="fragment_person"
         tools:layout="@layout/fragment_person" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.orderingfood.SearchFragment"
+        android:name="com.example.orderingfood.ui.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/shopFragment"
-        android:name="com.example.orderingfood.ShopFragment"
+        android:name="com.example.orderingfood.ui.shop.ShopFragment"
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" />
+    <fragment
+        android:id="@+id/dishDetailsFragment"
+        android:name="com.example.orderingfood.ui.DishDetailsFragment"
+        android:label="DishDetailsFragment" />
+    <fragment
+        android:id="@+id/dishesFragment"
+        android:name="com.example.orderingfood.ui.dishes.DishesFragment"
+        android:label="DishesFragment">
+        <argument
+            android:name="categoryId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_dishesFragment_to_dishDetailsFragment"
+            app:destination="@id/dishDetailsFragment" />
+    </fragment>
 </navigation>

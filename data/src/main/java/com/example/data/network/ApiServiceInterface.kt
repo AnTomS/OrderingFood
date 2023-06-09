@@ -1,11 +1,9 @@
-package com.example.orderingfood.network
+package com.example.data.network
 
-
-import com.example.orderingfood.model.Categories
-import com.example.orderingfood.model.Dish
+import com.example.data.model.Categories
+import com.example.data.model.Dish
 import retrofit2.Call
 import retrofit2.http.GET
-
 
 interface ApiServiceInterface {
     @GET("v3/058729bd-1402-4578-88de-265481fd7d54")
