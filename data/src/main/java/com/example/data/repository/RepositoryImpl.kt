@@ -10,31 +10,45 @@ class RepositoryImpl(
     private val remoteDataSource: RemoteDataSource
 ) : Repository {
     override suspend fun getCategories(): List<Categories> {
-        TODO("Not yet implemented")
+        return try {
+            val categories = remoteDataSource.getCategories()
+            localDataSource.saveCategories(categories)
+            categories
+        } catch (e: Exception) {
+            // Обработка ошибок, логирование и возврат пустого списка или другого значения по умолчанию
+            emptyList()
+        }
     }
 
     override suspend fun getDishes(): List<Dish> {
-        TODO("Not yet implemented")
+        return try {
+            val dishes = remoteDataSource.getDishes()
+            localDataSource.saveDishes(dishes)
+            dishes
+        } catch (e: Exception) {
+            // Обработка ошибок, логирование и возврат пустого списка или другого значения по умолчанию
+            emptyList()
+        }
     }
 
     override suspend fun addToCart(dish: Dish) {
-        // Реализация добавления блюда в корзину
+        localDataSource.addToCart(dish)
     }
 
     override suspend fun removeFromCart(dish: Dish) {
-        // Реализация удаления блюда из корзины
+        localDataSource.removeFromCart(dish)
     }
 
     override suspend fun increaseDishQuantity(dish: Dish) {
-        // Реализация увеличения количества блюда в корзине
+        localDataSource.increaseDishQuantity(dish)
     }
 
     override suspend fun decreaseDishQuantity(dish: Dish) {
-        // Реализация уменьшения количества блюда в корзине
+        localDataSource.decreaseDishQuantity(dish)
     }
 
     override suspend fun getCartTotalPrice(): Int {
-        TODO("Not yet implemented")
+        return localDataSource.getCartTotalPrice()
     }
 
 }
