@@ -1,31 +1,49 @@
 package com.example.orderingfood.ui.categories
 
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import javax.inject.Inject
+import com.bumptech.glide.Glide
+import com.example.domain.model.Categories
+import com.example.orderingfood.databinding.CateroryCardviewBinding
 
-class CategoriesAdapter
-@Inject constructor() :
-    RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
+class CategoriesAdapter :
+    ListAdapter<Categories, CategoriesAdapter.CategoriesViewHolder>(CategoryDiffCallback()) {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        // Определите элементы UI, например, TextView
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = CateroryCardviewBinding.inflate(inflater, parent, false)
+        return CategoriesViewHolder(binding)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        // Создайте ViewHolder и свяжите его с макетом элемента списка
-        TODO()
+    override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
+        val category = getItem(position)
+        holder.bind(category)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        // Свяжите данные категории с элементом списка
+    inner class CategoriesViewHolder(private val binding: CateroryCardviewBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(category: Categories) {
+            binding.apply {
+                // Привязка данных к элементам вёрстки
+                itemLibraryText.text = category.name
+                Glide.with(itemView)
+                    .load(category.image_url)
+                    .into(itemLibraryImage)
+            }
+        }
     }
 
-    override fun getItemCount(): Int {
-        return 1
-        // Верните количество элементов списка
+    class CategoryDiffCallback : DiffUtil.ItemCallback<Categories>() {
+        override fun areItemsTheSame(oldItem: Categories, newItem: Categories): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Categories, newItem: Categories): Boolean {
+            return oldItem == newItem
+        }
     }
 }

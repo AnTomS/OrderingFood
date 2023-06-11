@@ -3,9 +3,10 @@ package com.example.orderingfood.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.data.repository.Repository
+import com.example.data.repository.RepositoryImpl
 
 @Suppress("UNCHECKED_CAST")
-class ViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
+class ViewModelFactory(private val repository: RepositoryImpl) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(CartViewModel::class.java) -> {
