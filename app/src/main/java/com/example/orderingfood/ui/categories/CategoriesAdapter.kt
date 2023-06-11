@@ -19,19 +19,19 @@ class CategoriesAdapter :
     }
 
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
-        val category = getItem(position)
-        holder.bind(category)
+        val categories = getItem(position)
+        holder.bind(categories)
     }
 
     inner class CategoriesViewHolder(private val binding: CateroryCardviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(category: Categories) {
+        fun bind(categories: Categories) {
             binding.apply {
                 // Привязка данных к элементам вёрстки
-                itemLibraryText.text = category.name
+                itemLibraryText.text = categories.name
                 Glide.with(itemView)
-                    .load(category.image_url)
+                    .load(categories.image_url)
                     .into(itemLibraryImage)
             }
         }

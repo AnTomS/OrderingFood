@@ -2,9 +2,13 @@ package com.example.orderingfood.di
 
 import android.app.Application
 import android.content.Context
+import com.example.data.repository.Repository
+import com.example.data.repository.RepositoryImpl
+import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
+@Module
 class AppModule(private val application: Application) {
 
     @Provides
@@ -12,4 +16,5 @@ class AppModule(private val application: Application) {
     fun provideContext(): Context {
         return application
     }
+
 }

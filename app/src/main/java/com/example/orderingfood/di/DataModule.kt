@@ -1,10 +1,11 @@
 package com.example.orderingfood.di
 
 import com.example.data.network.ApiServiceInterface
+import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import javax.inject.Singleton
-
+@Module
 class DataModule {
 
     @Provides

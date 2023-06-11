@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.data.repository.Repository
 import com.example.data.repository.RepositoryImpl
 import com.example.domain.model.Dish
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DishesViewModel(private val repository: RepositoryImpl) : ViewModel() {
+class DishesViewModel @Inject constructor(private val repository: RepositoryImpl) : ViewModel() {
 
     private val _dishes = MutableLiveData<List<Dish>>()
     val dishes: LiveData<List<Dish>> get() = _dishes
