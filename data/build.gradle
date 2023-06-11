@@ -58,6 +58,8 @@ dependencies {
     //flow
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
+    implementation project(':domain')
+
     //paging
     implementation "androidx.paging:paging-runtime-ktx:3.2.0-alpha05"
 }
