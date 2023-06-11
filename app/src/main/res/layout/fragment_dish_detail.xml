@@ -7,8 +7,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
 
         <ImageView
             android:id="@+id/ivDishImage"
@@ -33,18 +36,19 @@
                 android:id="@+id/btnAddToFavorites"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
-                android:layout_gravity="center"
+                android:layout_gravity="center_horizontal"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/sharp_favorite_border_24" />
+                android:src="@drawable/sharp_favorite_border_24"
+                android:contentDescription="@string/add_favorite" />
 
             <ImageButton
-
                 android:id="@+id/btnClose"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
-                android:layout_marginTop="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/sharp_close_24" />
+                android:src="@drawable/sharp_close_24"
+                android:contentDescription="@string/close_detail_dish" />
 
         </LinearLayout>
 

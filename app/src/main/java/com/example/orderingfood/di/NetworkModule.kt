@@ -1,5 +1,6 @@
-package com.example.data.network
+package com.example.orderingfood.di
 
+import com.example.data.network.ApiServiceInterface
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -15,9 +16,6 @@ class NetworkModule {
             .build()
     }
 
-    @Provides
-    fun provideApiService(retrofit: Retrofit): ApiServiceInterface {
-        return retrofit.create(ApiServiceInterface::class.java)
-    }
+
 }
 

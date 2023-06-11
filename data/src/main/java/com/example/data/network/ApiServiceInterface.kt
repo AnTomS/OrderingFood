@@ -1,7 +1,7 @@
 package com.example.data.network
 
-import com.example.data.model.Categories
-import com.example.data.model.Dish
+import com.example.domain.model.Categories
+import com.example.domain.model.Dish
 import retrofit2.Call
 import retrofit2.http.GET
 

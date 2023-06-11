@@ -1,4 +1,4 @@
-package com.example.data.model
+package com.example.domain.model
 
 data class Dish(
     val id: Int,

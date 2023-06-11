@@ -40,7 +40,7 @@
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/shopFragment"
-        android:name="com.example.orderingfood.ui.shop.ShopFragment"
+        android:name="com.example.orderingfood.ui.shop.CartFragment"
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" />
     <fragment

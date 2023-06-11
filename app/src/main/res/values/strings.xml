@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Ordering Food</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name" translatable="false">Ordering Food</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
+    <string name="title_notifications" translatable="false">Notifications</string>
     <string name="title_main_screen">Главная</string>
     <string name="title_search_screen">Поиск</string>
     <string name="title_shop_screen">Корзина</string>
@@ -10,4 +10,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="city">Санкт-Петербург</string>
+    <string name="add_favorite">Добавить в избранное</string>
+    <string name="close_detail_dish">Закрыть детальный просмотр блюда</string>
 </resources>

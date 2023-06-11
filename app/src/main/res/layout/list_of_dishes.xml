@@ -81,9 +81,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/micro_padding"
+            android:text="Кнопка 1"
             app:backgroundTint="@drawable/rounded_gray_background"
             app:backgroundTintMode="@drawable/teg_btn_drawable"
-            android:text="Кнопка 1"
             app:layout_constraintEnd_toStartOf="@id/button2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -93,9 +93,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/micro_padding"
+            android:text="Кнопка 2"
             app:backgroundTint="@drawable/rounded_gray_background"
             app:backgroundTintMode="@drawable/teg_btn_drawable"
-            android:text="Кнопка 2"
             app:layout_constraintEnd_toStartOf="@id/button3"
             app:layout_constraintStart_toEndOf="@id/button1"
             app:layout_constraintTop_toTopOf="parent" />
@@ -105,9 +105,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/micro_padding"
+            android:text="Кнопка 3"
             app:backgroundTint="@drawable/rounded_gray_background"
             app:backgroundTintMode="@drawable/teg_btn_drawable"
-            android:text="Кнопка 3"
             app:layout_constraintEnd_toStartOf="@id/button4"
             app:layout_constraintStart_toEndOf="@id/button2"
             app:layout_constraintTop_toTopOf="parent" />
@@ -117,9 +117,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/micro_padding"
+            android:text="Кнопка 4"
             app:backgroundTint="@drawable/rounded_gray_background"
             app:backgroundTintMode="@drawable/teg_btn_drawable"
-            android:text="Кнопка 4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/button3"
             app:layout_constraintTop_toTopOf="parent" />
