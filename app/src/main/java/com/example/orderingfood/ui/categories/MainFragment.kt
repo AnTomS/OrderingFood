@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.orderingfood.App
 import com.example.orderingfood.databinding.FragmentMainBinding
 import com.example.orderingfood.viewmodels.CategoriesViewModel
-import com.example.orderingfood.viewmodels.DishesViewModel
 
 
 class MainFragment : Fragment() {

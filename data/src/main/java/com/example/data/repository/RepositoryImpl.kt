@@ -4,6 +4,8 @@ import com.example.data.local.LocalDataSource
 import com.example.data.local.RemoteDataSource
 import com.example.domain.model.Categories
 import com.example.domain.model.Dish
+import dagger.Provides
+
 
 class RepositoryImpl(
     private val localDataSource: LocalDataSource,
