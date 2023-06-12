@@ -1,6 +1,7 @@
 package com.example.orderingfood
 
 import android.app.Application
+import android.util.Log
 import com.example.orderingfood.di.AppComponent
 import com.example.orderingfood.di.AppModule
 import com.example.orderingfood.di.DaggerAppComponent
@@ -11,7 +12,6 @@ import com.example.orderingfood.di.ViewModelModule
 class App : Application() {
     lateinit var appComponent: AppComponent
 
-    @Suppress("DEPRECATION")
     override fun onCreate() {
         super.onCreate()
         appComponent = DaggerAppComponent.builder()
@@ -20,5 +20,7 @@ class App : Application() {
             .viewModelModule(ViewModelModule())
             .networkModule(NetworkModule())
             .build()
+
+        Log.d("App", "AppComponent initialized: $appComponent")
     }
 }

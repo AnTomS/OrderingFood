@@ -23,16 +23,20 @@ class CategoriesAdapter :
         holder.bind(categories)
     }
 
+    fun setCategories(categories: List<Categories>) {
+        submitList(categories)
+    }
+
     inner class CategoriesViewHolder(private val binding: CateroryCardviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(categories: Categories) {
             binding.apply {
                 // Привязка данных к элементам вёрстки
-                itemLibraryText.text = categories.name
-                Glide.with(itemView)
+                nameForCategory.text = categories.name
+                Glide.with(imageForCategory)
                     .load(categories.image_url)
-                    .into(itemLibraryImage)
+                    .into(imageForCategory)
             }
         }
     }
