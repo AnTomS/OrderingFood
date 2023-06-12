@@ -8,8 +8,9 @@ import com.example.domain.model.Dish
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
-class LocalDataSource {
+class LocalDataSource  @Inject constructor(){
     private val cartItems: MutableList<CartItem> = mutableListOf()
     private val _cart: MutableStateFlow<Cart> = MutableStateFlow(Cart())
     val cart: StateFlow<Cart> = _cart

@@ -3,8 +3,9 @@ package com.example.data.local
 import com.example.data.network.ApiServiceInterface
 import com.example.domain.model.Categories
 import com.example.domain.model.Dish
+import javax.inject.Inject
 
-class RemoteDataSource(private val apiService: ApiServiceInterface) {
+class RemoteDataSource @Inject constructor(private val apiService: ApiServiceInterface) {
 
     suspend fun getCategories(): List<Categories> {
         return try {
