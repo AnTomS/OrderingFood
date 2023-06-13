@@ -1,5 +1,6 @@
 package com.example.data.repository
 
+import android.util.Log
 import com.example.data.local.LocalDataSource
 import com.example.data.local.RemoteDataSource
 import com.example.domain.model.Categories
@@ -15,9 +16,11 @@ class RepositoryImpl(
         return try {
             val categories = remoteDataSource.getCategories()
             localDataSource.saveCategories(categories)
+            Log.d("RepositoryImpl", "Categories loaded from remote data source: $categories")
             categories
         } catch (e: Exception) {
             // Обработка ошибок, логирование и возврат пустого списка или другого значения по умолчанию
+            Log.e("RepositoryImpl", "Error loading categories: ${e.message}")
             emptyList()
         }
     }

@@ -12,4 +12,6 @@
     <string name="city">Санкт-Петербург</string>
     <string name="add_favorite">Добавить в избранное</string>
     <string name="close_detail_dish">Закрыть детальный просмотр блюда</string>
+    <string name="geo_icon">geo_icon</string>
+    <string name="imageForCategory">Картинка для категории</string>
 </resources>

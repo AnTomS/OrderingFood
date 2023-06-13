@@ -17,4 +17,10 @@ class DataModule {
     fun provideApiService(retrofit: Retrofit): ApiServiceInterface {
         return retrofit.create(ApiServiceInterface::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideRepositoryImpl(localDataSource: LocalDataSource, remoteDataSource: RemoteDataSource): RepositoryImpl {
+        return RepositoryImpl(localDataSource, remoteDataSource)
+    }
 }

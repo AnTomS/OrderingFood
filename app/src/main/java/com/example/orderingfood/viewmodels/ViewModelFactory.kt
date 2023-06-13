@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.data.repository.Repository
 import com.example.data.repository.RepositoryImpl
 
-@Suppress("UNCHECKED_CAST")
 class ViewModelFactory(private val repository: RepositoryImpl) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {

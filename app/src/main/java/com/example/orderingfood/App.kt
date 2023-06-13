@@ -1,6 +1,7 @@
 package com.example.orderingfood
 
 import android.app.Application
+import android.util.Log
 import com.example.orderingfood.di.AppComponent
 import com.example.orderingfood.di.AppModule
 import com.example.orderingfood.di.DaggerAppComponent
@@ -14,12 +15,13 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        // Инициализируйте компонент Dagger при создании приложения
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule(this))
             .dataModule(DataModule())
             .viewModelModule(ViewModelModule())
             .networkModule(NetworkModule())
             .build()
+
+        Log.d("App", "AppComponent initialized: $appComponent")
     }
 }

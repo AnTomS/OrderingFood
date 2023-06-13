@@ -1,6 +1,7 @@
 package com.example.data.local
 
 
+import android.util.Log
 import com.example.domain.model.Cart
 import com.example.domain.model.CartItem
 import com.example.domain.model.Categories
@@ -8,8 +9,9 @@ import com.example.domain.model.Dish
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
 
-class LocalDataSource {
+class LocalDataSource @Inject constructor() {
     private val cartItems: MutableList<CartItem> = mutableListOf()
     private val _cart: MutableStateFlow<Cart> = MutableStateFlow(Cart())
     val cart: StateFlow<Cart> = _cart
@@ -18,13 +20,15 @@ class LocalDataSource {
     private val dishesFlow: MutableStateFlow<List<Dish>> = MutableStateFlow(emptyList())
 
     // Метод для сохранения списка категорий с использованием Flow
-    fun saveCategories(categories: List<Categories>) {
+    suspend fun saveCategories(categories: List<Categories>) {
         categoriesFlow.value = categories
+        Log.d("LocalDataSource", "Categories saved: $categories")
     }
 
     // Метод для сохранения списка блюд с использованием Flow
-    fun saveDishes(dishes: List<Dish>) {
+    suspend fun saveDishes(dishes: List<Dish>) {
         dishesFlow.value = dishes
+        Log.d("LocalDataSource", "Dishes saved: $dishes")
     }
 
     // Методы для получения сохраненных данных с использованием Flow
@@ -34,16 +38,17 @@ class LocalDataSource {
         return cartItems
     }
 
-    fun addToCart(dish: Dish) {
+    suspend fun addToCart(dish: Dish) {
         val existingItem = cartItems.find { it.dish == dish }
         if (existingItem != null) {
             existingItem.quantity++
         } else {
             cartItems.add(CartItem(dish, 1))
         }
+        Log.d("LocalDataSource", "Dish added to cart: $dish")
     }
 
-    fun removeFromCart(dish: Dish) {
+    suspend fun removeFromCart(dish: Dish) {
         val existingItem = cartItems.find { it.dish == dish }
         if (existingItem != null) {
             if (existingItem.quantity > 1) {
@@ -52,6 +57,7 @@ class LocalDataSource {
                 cartItems.remove(existingItem)
             }
         }
+        Log.d("LocalDataSource", "Dish removed from cart: $dish")
     }
 
     fun getCartTotalPrice(): Int {
@@ -59,6 +65,7 @@ class LocalDataSource {
         for (item in cartItems) {
             totalPrice += item.totalPrice
         }
+        Log.d("LocalDataSource", "Cart total price: $totalPrice")
         return totalPrice
     }
 
@@ -67,6 +74,7 @@ class LocalDataSource {
         if (cartItem != null) {
             cartItem.quantity++
             saveCart()
+            Log.d("LocalDataSource", "Dish quantity increased: $dish")
         }
     }
 
@@ -79,6 +87,7 @@ class LocalDataSource {
                 removeCartItem(cartItem)
             }
             saveCart()
+            Log.d("LocalDataSource", "Dish quantity decreased: $dish")
         }
     }
 
@@ -93,5 +102,6 @@ class LocalDataSource {
     private fun saveCart() {
         // Сохранение состояния корзины
         _cart.value = _cart.value.copy() // Обновляем значение, чтобы сработал Flow
+        Log.d("LocalDataSource", "Cart saved: ${_cart.value}")
     }
 }
