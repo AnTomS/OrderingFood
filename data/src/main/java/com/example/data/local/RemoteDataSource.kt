@@ -32,7 +32,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiServiceInt
         return try {
             val response = apiService.getCategories().execute()
             if (response.isSuccessful) {
-                val responseBody = response.body()?.string()
+                val responseBody = response.body()?.toString()
                 Log.d("RemoteDataSource", "Categories: $responseBody")
                 handleJSONResponse(responseBody)
             } else {
@@ -49,9 +49,9 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiServiceInt
     private fun handleJSONResponse(responseBody: String?): List<Categories> {
         try {
             Log.d("RemoteDataSource", "JSON response body: $responseBody")
-            val converter = Moshi.Builder().build()
-            val jsonAdapter = converter.adapter(CategoriesResponse::class.java)
-            val categoriesResponse = jsonAdapter.fromJson(responseBody!!)
+            val moshi = Moshi.Builder().build()
+            val jsonAdapter = moshi.adapter(CategoriesResponse::class.java)
+            val categoriesResponse = jsonAdapter.fromJson(responseBody)
             val categories = categoriesResponse?.categories ?: emptyList()
             Log.d("RemoteDataSource", "всё ок: $categories")
             return categories
