@@ -4,7 +4,11 @@ import android.util.Log
 import com.example.data.local.LocalDataSource
 import com.example.data.local.RemoteDataSource
 import com.example.domain.model.Categories
+import com.example.domain.model.CategoriesResponse
 import com.example.domain.model.Dish
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+
 
 class RepositoryImpl(
     private val localDataSource: LocalDataSource,
@@ -33,6 +37,8 @@ class RepositoryImpl(
             emptyList()
         }
     }
+
+
 
     override suspend fun addToCart(dish: Dish) {
         localDataSource.addToCart(dish)
