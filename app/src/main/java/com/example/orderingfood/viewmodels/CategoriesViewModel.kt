@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.repository.RepositoryImpl
-import com.example.domain.model.Categories
+import com.example.domain.model.dto.Categories
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,20 +22,22 @@ class CategoriesViewModel @Inject constructor(private val repository: Repository
     }
 
     fun loadCategories() {
-        viewModelScope.launch {
-            try {
-                val categoriesList = withContext(Dispatchers.IO) {
-                    repository.getCategories()
-                }
-                Log.d("CategoriesViewModel", "Категории успешно загружены: $categoriesList")
-                _categories.postValue(categoriesList)
-            } catch (e: Exception) {
-                Log.e("CategoriesViewModel", "Ошибка при загрузке категорий: ${e.message}")
-                // Обрабатываем ошибку загрузки данных
-            }
-        }
     }
-}
+    }
+//        viewModelScope.launch {
+//            try {
+//                val categoriesList = withContext(Dispatchers.IO) {
+//                    repository.getCategories()
+//                }
+//                Log.d("CategoriesViewModel", "Категории успешно загружены: $categoriesList")
+//                _categories.postValue()
+//            } catch (e: Exception) {
+//                Log.e("CategoriesViewModel", "Ошибка при загрузке категорий: ${e.message}")
+//                // Обрабатываем ошибку загрузки данных
+//            }
+//        }
+//    }
+
 
 //    fun loadCategories() {
 //        viewModelScope.launch {

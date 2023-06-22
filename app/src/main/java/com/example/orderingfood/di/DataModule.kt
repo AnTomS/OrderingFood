@@ -20,7 +20,9 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideRepositoryImpl(localDataSource: LocalDataSource, remoteDataSource: RemoteDataSource): RepositoryImpl {
-        return RepositoryImpl(localDataSource, remoteDataSource)
+    fun provideRepositoryImpl(
+         apiServiceInterface: ApiServiceInterface
+    ): RepositoryImpl {
+        return RepositoryImpl(apiServiceInterface)
     }
 }

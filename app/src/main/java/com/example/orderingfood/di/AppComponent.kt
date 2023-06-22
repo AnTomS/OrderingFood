@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [AppModule::class, DataModule::class, NetworkModule::class, ViewModelModule::class])
+@Component(modules = [AppModule::class, DataModule::class, NetworkModule::class, ViewModelModule::class, DomainModule::class])
 interface AppComponent {
     fun inject(fragment: MainFragment) {
         Log.d("AppComponent", "MainFragment")
@@ -20,7 +20,7 @@ interface AppComponent {
         Log.d("AppComponent", "Injecting MainActivity")
     }
 
-    fun inject(fragment: DishesFragment){
+    fun inject(fragment: DishesFragment) {
         Log.d("AppComponent", "DishesFragment")
     }
 

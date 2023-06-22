@@ -4,7 +4,9 @@ import android.app.Application
 import android.util.Log
 import com.example.orderingfood.di.AppComponent
 import com.example.orderingfood.di.AppModule
+import com.example.orderingfood.di.DaggerAppComponent
 import com.example.orderingfood.di.DataModule
+import com.example.orderingfood.di.DomainModule
 import com.example.orderingfood.di.NetworkModule
 import com.example.orderingfood.di.ViewModelModule
 

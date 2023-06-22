@@ -1,11 +1,12 @@
-package com.example.data.repository
+package com.example.domain.model.repository
 
-import com.example.domain.model.Categories
-import com.example.domain.model.Dish
+import com.example.domain.model.dto.Categories
+import com.example.domain.model.dto.CategoriesResponse
+import com.example.domain.model.dto.Dish
 
 interface Repository {
 
-    suspend fun getCategories(): List<Categories>
+    suspend fun getCategories(): CategoriesResponse
     suspend fun getDishes(): List<Dish>
     suspend fun addToCart(dish: Dish)
     suspend fun removeFromCart(dish: Dish)

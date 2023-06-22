@@ -1,4 +1,4 @@
-package com.example.domain.model
+package com.example.domain.model.dto
 
 import com.squareup.moshi.Json
 
@@ -15,5 +15,4 @@ data class Categories(
     val id: Int,
     val name: String,
     val image_url: String
-    //@Json(name = "image_url") val image_url: String
 )

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.domain.model.Dish
+import com.example.domain.model.dto.Dish
 import com.example.orderingfood.databinding.DishesCardviewBinding
 
 class DishesAdapter(

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.repository.RepositoryImpl
-import com.example.domain.model.Dish
+import com.example.domain.model.dto.Dish
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

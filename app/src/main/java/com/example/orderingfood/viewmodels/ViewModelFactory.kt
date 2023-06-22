@@ -2,7 +2,6 @@ package com.example.orderingfood.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.data.repository.Repository
 import com.example.data.repository.RepositoryImpl
 
 class ViewModelFactory(private val repository: RepositoryImpl) : ViewModelProvider.Factory {

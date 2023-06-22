@@ -1,6 +1,7 @@
 package com.example.orderingfood.di
 
 import android.util.Log
+import com.example.data.network.ApiServiceInterface
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -40,7 +41,6 @@ class NetworkModule {
             .baseUrl("https://run.mocky.io/")
             .client(httpClient)
             .build()
-
     }
 }
 

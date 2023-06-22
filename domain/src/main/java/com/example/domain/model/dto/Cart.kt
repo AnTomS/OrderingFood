@@ -1,4 +1,4 @@
-package com.example.domain.model
+package com.example.domain.model.dto
 
 data class CartItem(val dish: Dish, var quantity: Int) {
     val totalPrice: Int
