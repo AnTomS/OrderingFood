@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,16 +14,29 @@
         android:layout_height="wrap_content">
 
 
-        <ImageView
-            android:id="@+id/ivDishImage"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/baseline_set_meal_24"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@id/containerTopRight"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frame_for_image_dishes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/back_for_dishes"
+            android:padding="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivDishImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/image_for_dishes"
+                android:src="@drawable/baseline_set_meal_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:id="@+id/containerTopRight"
@@ -106,5 +120,17 @@
         app:layout_constraintEnd_toEndOf="@id/tvDishName"
         app:layout_constraintStart_toStartOf="@id/tvDishName"
         app:layout_constraintTop_toBottomOf="@id/containerPriceWeight" />
+
+    <Button
+        android:id="@+id/addToCart"
+        android:text="@string/add_to_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDishDescription">
+
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

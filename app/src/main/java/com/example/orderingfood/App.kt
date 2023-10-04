@@ -14,6 +14,7 @@ import com.example.orderingfood.di.ViewModelModule
 class App : Application() {
     lateinit var appComponent : AppComponent
 
+    @Suppress("DEPRECATION")
     override fun onCreate() {
         super.onCreate()
         appComponent = DaggerAppComponent.builder()

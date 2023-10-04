@@ -1,18 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'androidx.navigation.safeargs'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
 }
 
 android {
     namespace 'com.example.orderingfood'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.orderingfood"
-        minSdk 24
-        targetSdk 33
+        minSdk 26
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -36,12 +36,13 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -55,16 +56,15 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
     implementation 'androidx.fragment:fragment-ktx:1.6.0'
-
-
+    
     //recycler
-    implementation 'androidx.recyclerview:recyclerview:1.3.0'
-
+    implementation 'androidx.recyclerview:recyclerview:1.3.1'
 
     //coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    implementation 'androidx.core:core-ktx:1.10.1'
     // retrofit
+    implementation 'com.squareup.retrofit2:adapter-java8:2.9.0'
+
     def retrofitVersion = '2.9.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
 
@@ -79,9 +79,7 @@ dependencies {
     //dagger
     implementation 'com.google.dagger:dagger-android:2.45'
     implementation 'com.google.dagger:dagger-android-support:2.45'
-    kapt( 'com.google.dagger:dagger-compiler:2.45')
-    implementation project(':data')
-    implementation project(':domain')
+    kapt('com.google.dagger:dagger-compiler:2.45')
 
     //glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
@@ -89,7 +87,6 @@ dependencies {
 
     //moshi
     implementation 'com.squareup.moshi:moshi:1.15.0'
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
 
     testImplementation 'junit:junit:4.13.2'

@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.dishes.DishesFragment">
+    android:layout_height="wrap_content"
+    tools:context=".presentation.ui.dishes.DishesFragment">
 
     <!-- Тулбар -->
     <androidx.appcompat.widget.Toolbar
@@ -71,9 +71,12 @@
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="613dp"
         android:gravity="center"
+
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/rv_dishes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_toolbar">
 
@@ -83,8 +86,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/micro_padding"
             android:text="Кнопка 1"
-            app:backgroundTint="@drawable/rounded_gray_background"
-            app:backgroundTintMode="@drawable/teg_btn_drawable"
+
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/button2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -94,9 +97,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/micro_padding"
+            android:layout_marginBottom="8dp"
             android:text="Кнопка 2"
-            app:backgroundTint="@drawable/rounded_gray_background"
-            app:backgroundTintMode="@drawable/teg_btn_drawable"
+
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/button3"
             app:layout_constraintStart_toEndOf="@id/button1"
             app:layout_constraintTop_toTopOf="parent" />
@@ -106,9 +110,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/micro_padding"
+            android:layout_marginBottom="8dp"
             android:text="Кнопка 3"
-            app:backgroundTint="@drawable/rounded_gray_background"
-            app:backgroundTintMode="@drawable/teg_btn_drawable"
+
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/button4"
             app:layout_constraintStart_toEndOf="@id/button2"
             app:layout_constraintTop_toTopOf="parent" />
@@ -119,8 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/micro_padding"
             android:text="Кнопка 4"
-            app:backgroundTint="@drawable/rounded_gray_background"
-            app:backgroundTintMode="@drawable/teg_btn_drawable"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/button3"
             app:layout_constraintTop_toTopOf="parent" />
@@ -128,9 +132,10 @@
 
     <!-- RecyclerView для отображения блюд -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rv_dishes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -12,7 +12,7 @@
         android:label="MainActivity" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.orderingfood.ui.categories.MainFragment"
+        android:name="com.example.orderingfood.presentation.ui.categories.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
@@ -28,34 +28,33 @@
             android:id="@+id/action_mainFragment_to_dishesFragment"
             app:destination="@id/dishesFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/personFragment"
-        android:name="com.example.orderingfood.ui.PersonFragment"
+        android:name="com.example.orderingfood.presentation.ui.PersonFragment"
         android:label="fragment_person"
-        tools:layout="@layout/fragment_person" />
+        tools:layout="@layout/fragment_person"></fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.orderingfood.ui.SearchFragment"
+        android:name="com.example.orderingfood.presentation.ui.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search"></fragment>
     <fragment
         android:id="@+id/shopFragment"
-        android:name="com.example.orderingfood.ui.shop.CartFragment"
+        android:name="com.example.orderingfood.presentation.ui.shop.CartFragment"
         android:label="fragment_shop"
-        tools:layout="@layout/fragment_shop" />
+        tools:layout="@layout/fragment_shop"></fragment>
     <fragment
         android:id="@+id/dishDetailsFragment"
-        android:name="com.example.orderingfood.ui.DishDetailsFragment"
-        android:label="DishDetailsFragment" />
+        android:name="com.example.orderingfood.presentation.ui.dishesdetails.DishesDetailsFragment"
+        android:label="DishDetailsFragment">
+        <argument
+            android:name="dishesId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/dishesFragment"
-        android:name="com.example.orderingfood.ui.dishes.DishesFragment"
-        android:label="DishesFragment">
-        <argument
-            android:name="categoryId"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_dishesFragment_to_dishDetailsFragment"
-            app:destination="@id/dishDetailsFragment" />
-    </fragment>
+        android:name="com.example.orderingfood.presentation.ui.dishes.DishesFragment"
+        android:label="DishesFragment"/>
+
 </navigation>

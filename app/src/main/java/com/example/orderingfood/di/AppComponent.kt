@@ -1,10 +1,14 @@
 package com.example.orderingfood.di
 
 import android.util.Log
-import com.example.data.repository.RepositoryImpl
+import androidx.fragment.app.DialogFragment
 import com.example.orderingfood.MainActivity
-import com.example.orderingfood.ui.categories.MainFragment
-import com.example.orderingfood.ui.dishes.DishesFragment
+import com.example.orderingfood.data.repository.RepositoryImpl
+import com.example.orderingfood.presentation.ui.DishesDetailsDialogFragment
+import com.example.orderingfood.presentation.ui.categories.MainFragment
+import com.example.orderingfood.presentation.ui.dishes.DishesFragment
+import com.example.orderingfood.presentation.ui.dishesdetails.DishesDetailsFragment
+
 import dagger.Component
 import javax.inject.Singleton
 
@@ -13,7 +17,7 @@ import javax.inject.Singleton
 @Component(modules = [AppModule::class, DataModule::class, NetworkModule::class, ViewModelModule::class, DomainModule::class])
 interface AppComponent {
     fun inject(fragment: MainFragment) {
-        Log.d("AppComponent", "MainFragment")
+        Log.d("AppComponent", "Injecting MainFragment")
     }
 
     fun inject(activity: MainActivity) {
@@ -21,8 +25,18 @@ interface AppComponent {
     }
 
     fun inject(fragment: DishesFragment) {
-        Log.d("AppComponent", "DishesFragment")
+        Log.d("AppComponent", "Injecting DishesFragment")
     }
 
+    fun inject(fragment: DishesDetailsDialogFragment) {
+        Log.d("AppComponent", "Injecting DishDetailsDialogFragment")
+    }
+
+//    fun inject(fragment: DishesDetailsFragment) {
+//        Log.d("AppComponent", "Injecting DishDetailsFragment")
+//    }
+
     fun provideRepositoryImpl(): RepositoryImpl
+
+
 }

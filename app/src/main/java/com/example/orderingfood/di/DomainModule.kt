@@ -1,8 +1,8 @@
 package com.example.orderingfood.di
 
-import com.example.domain.model.repository.Repository
-import com.example.domain.model.usecase.GetCategoriesUseCase
-import com.example.domain.model.usecase.GetDishesUseCase
+import com.example.orderingfood.domain.repository.Repository
+import com.example.orderingfood.domain.usecase.GetCategoriesUseCase
+import com.example.orderingfood.domain.usecase.GetDishesUseCase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
