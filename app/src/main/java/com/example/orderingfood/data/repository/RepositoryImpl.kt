@@ -10,6 +10,7 @@ import javax.inject.Inject
 
 class RepositoryImpl
 @Inject constructor(private val apiService: ApiServiceInterface) : Repository {
+    private val cartItems = mutableListOf<Pair<Dish, Int>>()
     private val cachedDishes: MutableMap<Int, Dish> = HashMap()
     private var cachedDishList: List<Dish> = emptyList()
     override suspend fun getCategories(): List<Categories> {
@@ -26,23 +27,6 @@ class RepositoryImpl
             emptyList()
         }
     }
-
-//    override suspend fun getDishes(): List<Dish> {
-//        return try {
-//            val response = apiService.getDishes()
-//            if (response.isSuccessful) {
-//                val dishes = response.body()!!.dishes
-//                Log.d("RepositoryImpl", "Dishes: $dishes")
-//                dishes
-//            } else {
-//                Log.d("RepositoryImpl", "Unsuccessful response: ${response.code()}")
-//                emptyList()
-//            }
-//        } catch (e: Exception) {
-//            Log.d("RepositoryImpl", "Exception: ${e.message}")
-//            emptyList()
-//        }
-//    }
 
     override suspend fun getDishes(): List<Dish> {
         return try {
@@ -70,24 +54,49 @@ class RepositoryImpl
     }
 
 
-    override suspend fun addToCart(dish: Dish) {
-        TODO()
+    override fun addToCart(dish: Dish) {
+        val existingItem = cartItems.find { it.first.id == dish.id }
+        if (existingItem != null) {
+            // Увеличиваем количество, если блюдо уже в корзине
+            increaseDishQuantity(dish)
+        } else {
+            // Добавляем новое блюдо в корзину
+            cartItems.add(dish to 1)
+        }
     }
 
     override suspend fun removeFromCart(dish: Dish) {
-        TODO()
+        cartItems.removeAll { it.first.id == dish.id }
     }
 
-    override suspend fun increaseDishQuantity(dish: Dish) {
-        TODO()
+    override  fun increaseDishQuantity(dish: Dish) {
+        val existingItem = cartItems.find { it.first.id == dish.id }
+        existingItem?.let {
+            val updatedItem = it.copy(second = it.second + 1)
+            cartItems[cartItems.indexOf(it)] = updatedItem
+        }
     }
 
     override suspend fun decreaseDishQuantity(dish: Dish) {
-        TODO()
+        val existingItem = cartItems.find { it.first.id == dish.id }
+        existingItem?.let {
+            val updatedItem = it.copy(second = it.second - 1)
+            if (updatedItem.second > 0) {
+                cartItems[cartItems.indexOf(it)] = updatedItem
+            } else {
+                // Если количество стало нулевым, удалить блюдо из корзины
+                removeFromCart(dish)
+            }
+        }
     }
 
     override suspend fun getCartTotalPrice(): Int {
-        TODO()
+        return cartItems.sumOf { it.first.price * it.second }
+
+    }
+
+    override suspend fun getCartItems(): List<Pair<Dish, Int>> {
+        return cartItems.toList()
     }
 
 

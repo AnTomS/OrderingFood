@@ -86,7 +86,3 @@ class DishesFragment : Fragment(), DishAdapter.OnDishClickListener {
         myDialog.show(childFragmentManager, "DishDetailsFragment")
     }
 }
-
-/* val myDialog = DishDetailsFragment()
-        myDialog.show(childFragmentManager, "DishDetailsFragment")
-         это  активация диалогового окна*/

@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.example.orderingfood.App
 import com.example.orderingfood.R
 import com.example.orderingfood.databinding.FragmentDishDetailBinding
 import com.example.orderingfood.domain.dto.Dish
@@ -27,9 +28,12 @@ class DishesDetailsDialogFragment(private val dish: Dish) :  DialogFragment() {
     lateinit var dishesDetailsViewModel: DishesDetailsViewModel
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
         val inflater = requireActivity().layoutInflater
         val dialogView = inflater.inflate(R.layout.fragment_dish_detail, null)
 
+        val appComponent = (requireActivity().application as App).appComponent
+        appComponent.inject(this)
         val builder = AlertDialog.Builder(context)
         builder.setView(dialogView)
         val dialog = builder.create()
@@ -63,7 +67,7 @@ class DishesDetailsDialogFragment(private val dish: Dish) :  DialogFragment() {
             .into(dishImageView)
 
         dishDialogConfirmButton.setOnClickListener {
-
+            dishesDetailsViewModel.addItem(dish)
             dismiss()
         }
 

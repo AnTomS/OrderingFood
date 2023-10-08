@@ -8,6 +8,7 @@ import com.example.orderingfood.presentation.ui.DishesDetailsDialogFragment
 import com.example.orderingfood.presentation.ui.categories.MainFragment
 import com.example.orderingfood.presentation.ui.dishes.DishesFragment
 import com.example.orderingfood.presentation.ui.dishesdetails.DishesDetailsFragment
+import com.example.orderingfood.presentation.ui.shop.CartFragment
 
 import dagger.Component
 import javax.inject.Singleton
@@ -30,6 +31,10 @@ interface AppComponent {
 
     fun inject(fragment: DishesDetailsDialogFragment) {
         Log.d("AppComponent", "Injecting DishDetailsDialogFragment")
+    }
+
+    fun inject(fragment: CartFragment){
+        Log.d("AppComponent", "Injecting CartFragment")
     }
 
 //    fun inject(fragment: DishesDetailsFragment) {

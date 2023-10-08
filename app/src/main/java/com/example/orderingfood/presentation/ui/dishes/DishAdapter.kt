@@ -17,7 +17,6 @@ class DishAdapter(private val clickListener: OnDishClickListener) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = DishesCardviewBinding.inflate(inflater, parent, false)
-
         return DishViewHolder(binding)
 
     }
@@ -39,8 +38,6 @@ class DishAdapter(private val clickListener: OnDishClickListener) :
 
     inner class DishViewHolder(private val binding: DishesCardviewBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
-
-
 
         init {
             itemView.setOnClickListener(this)
@@ -66,10 +63,7 @@ class DishAdapter(private val clickListener: OnDishClickListener) :
 
             }
         }
-
-
     }
-
 
     class DishDiffCallback : DiffUtil.ItemCallback<Dish>() {
         override fun areItemsTheSame(oldItem: Dish, newItem: Dish): Boolean {
