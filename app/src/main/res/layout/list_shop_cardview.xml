@@ -23,6 +23,7 @@
 
         <!-- Название блюда -->
         <TextView
+            android:layout_marginStart="10dp"
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,6 +34,7 @@
 
         <!-- Цена блюда -->
         <TextView
+            android:layout_marginStart="10dp"
             android:id="@+id/textViewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,6 +45,7 @@
 
         <!-- Вес блюда -->
         <TextView
+            android:layout_marginStart="10dp"
             android:id="@+id/textViewWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +65,8 @@
 
             <!-- Кнопка "-" для уменьшения количества -->
             <ImageView
-                android:id="@+id/deleteDish"
+                android:clickable="true"
+                android:id="@+id/imageDecreaseDish"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/baseline_remove_24"
@@ -72,6 +76,7 @@
 
             <!-- Количество блюд -->
             <TextView
+                android:clickable="true"
                 android:id="@+id/textViewQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,13 +85,13 @@
                 android:textColor="@color/black"
                 android:text="1"
                 android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@id/deleteDish"
+                app:layout_constraintStart_toEndOf="@id/imageDecreaseDish"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <!-- Кнопка "+" для увеличения количества -->
             <ImageView
-                android:id="@+id/imageAddDish"
+                android:id="@+id/imageIncreaseDish"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/outline_add_24"

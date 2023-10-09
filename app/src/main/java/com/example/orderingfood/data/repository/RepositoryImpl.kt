@@ -65,11 +65,11 @@ class RepositoryImpl
         }
     }
 
-    override suspend fun removeFromCart(dish: Dish) {
+    override fun removeFromCart(dish: Dish) {
         cartItems.removeAll { it.first.id == dish.id }
     }
 
-    override  fun increaseDishQuantity(dish: Dish) {
+    override fun increaseDishQuantity(dish: Dish) {
         val existingItem = cartItems.find { it.first.id == dish.id }
         existingItem?.let {
             val updatedItem = it.copy(second = it.second + 1)
@@ -77,7 +77,7 @@ class RepositoryImpl
         }
     }
 
-    override suspend fun decreaseDishQuantity(dish: Dish) {
+    override fun decreaseDishQuantity(dish: Dish) {
         val existingItem = cartItems.find { it.first.id == dish.id }
         existingItem?.let {
             val updatedItem = it.copy(second = it.second - 1)
@@ -90,7 +90,7 @@ class RepositoryImpl
         }
     }
 
-    override suspend fun getCartTotalPrice(): Int {
+    override fun getCartTotalPrice(): Int {
         return cartItems.sumOf { it.first.price * it.second }
 
     }

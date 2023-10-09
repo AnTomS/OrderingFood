@@ -25,10 +25,6 @@ class DishesDetailsViewModel @Inject constructor(private val repository: Reposit
         return repository.getCartTotalPrice()
     }
 
-//    suspend fun getCartItems(): List<Pair<Dish, Int>> {
-//        return repository.getCartItems()
-//    }
-
      fun getCartItemsCount() {
          viewModelScope.launch(Dispatchers.IO) {
              try {
@@ -48,15 +44,31 @@ class DishesDetailsViewModel @Inject constructor(private val repository: Reposit
     }
 
      fun addItem(dish: Dish) {
-        repository.addToCart(dish)
+         viewModelScope.launch(Dispatchers.IO) {
+             repository.addToCart(dish)
+             getCartItemsCount()
+         }
     }
 
-    suspend fun decreaseDishQuantity(dish: Dish) {
-        repository.decreaseDishQuantity(dish)
+     fun decreaseDishQuantity(dish: Dish) {
+         viewModelScope.launch(Dispatchers.IO) {
+             repository.decreaseDishQuantity(dish)
+             getCartItemsCount()
+         }
     }
 
-    suspend fun increaseDishQuantity(dish: Dish) {
-        repository.increaseDishQuantity(dish)
+    fun increaseDishQuantity(dish: Dish) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.increaseDishQuantity(dish)
+            getCartItemsCount()
+        }
+    }
+
+    fun removeItemFromCart(dish: Dish) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.removeFromCart(dish)
+            getCartItemsCount()
+        }
     }
 
 

@@ -9,11 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.orderingfood.App
 import com.example.orderingfood.databinding.FragmentShopBinding
-import com.example.orderingfood.domain.dto.Dish
-import com.example.orderingfood.presentation.ui.dishes.DishAdapter
-import com.example.orderingfood.presentation.ui.viewmodels.CartViewModel
+import com.example.orderingfood.domain.dto.CartItem
 import com.example.orderingfood.presentation.ui.viewmodels.DishesDetailsViewModel
-import com.example.orderingfood.presentation.ui.viewmodels.DishesViewModel
 import javax.inject.Inject
 
 
@@ -47,21 +44,34 @@ class CartFragment : Fragment(), CartAdapter.OnCartClickListener {
         observeDishes()
         Log.d("CartFragment", "Injection completed CartFragment")
     }
-    override fun onCartClick(dish: Dish) {
-        Log.d("CartFragment", "Clicked on dish with id: ${dish.id}")
+
+    override fun onCartClick(item: CartItem) {
+        Log.d("CartFragment", "Clicked on dish with id: ${item.dish.id}")
+    }
+
+    override fun onIncreaseDishClick(item: CartItem) {
+        cartViewModel.increaseDishQuantity(item.dish)
+        Log.d("CartFragment", "увеличен количество блюда: ${item.quantity}")
+    }
+
+    override fun onDecreaseDishClick(item: CartItem) {
+        cartViewModel.decreaseDishQuantity(item.dish)
+        Log.d("CartFragment", "уменьшено количество блюда: ${item.quantity}")
     }
 
     private fun setupRecyclerView() {
         cartAdapter = CartAdapter(this)
         binding.listShop.adapter = cartAdapter
     }
+
     private fun observeDishes() {
         cartViewModel.getCartItemsCount()
         cartViewModel.dishesShop.observe(viewLifecycleOwner) { dishesShop ->
             if (dishesShop != null) {
-                cartAdapter.setDishes(dishesShop.map { it.first })
+                val cartItems = dishesShop.map { (dish, quantity) -> CartItem(dish, quantity) }
+                cartAdapter.submitList(cartItems)
             }
             Log.d("CartFragment", "Dishes: $dishesShop")
         }
-            }
+    }
 }
