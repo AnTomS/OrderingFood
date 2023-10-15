@@ -94,8 +94,8 @@ class CartAdapter(private val clickListener: OnCartClickListener) :
                         .load(dish.imageUrl)
                         .into(imageViewDish)
 
-//                    imageIncreaseDish.tag = dish
-//                    imageDecreaseDish.tag = dish
+                    imageIncreaseDish.tag = dish
+                    imageDecreaseDish.tag = dish
                 }
 
 
