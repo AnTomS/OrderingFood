@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.fragment.app.DialogFragment
 import com.example.orderingfood.MainActivity
 import com.example.orderingfood.data.repository.RepositoryImpl
+import com.example.orderingfood.data.room.dao.DishesDao
 import com.example.orderingfood.presentation.ui.DishesDetailsDialogFragment
 import com.example.orderingfood.presentation.ui.categories.MainFragment
 import com.example.orderingfood.presentation.ui.dishes.DishesFragment
@@ -42,6 +43,8 @@ interface AppComponent {
 //    }
 
     fun provideRepositoryImpl(): RepositoryImpl
+
+    fun provideDishesDao(): DishesDao
 
 
 }

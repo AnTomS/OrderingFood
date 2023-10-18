@@ -2,6 +2,8 @@ package com.example.orderingfood.data.room.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.orderingfood.data.room.db.Converters
 import com.example.orderingfood.domain.dto.Dish
 
 
@@ -13,7 +15,8 @@ class DishesEntity(
     val imageUrl: String? = "",
     val name: String = "",
     val price: Int = 0,
-    val tegs: String = "",
+    @TypeConverters(Converters::class)
+    val tegs: List<String> = emptyList(),
     val weight: Int = 0
 
 ) {
