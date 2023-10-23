@@ -1,7 +1,11 @@
 package com.example.orderingfood.data.repository
 
 import android.util.Log
-import com.example.orderingfood.data.network.ApiServiceInterface
+import com.example.orderingfood.data.repository.datasource.LocalDataSource
+import com.example.orderingfood.data.repository.datasource.RemoveDataSource
+import com.example.orderingfood.data.room.entity.DishesEntity
+import com.example.orderingfood.data.room.entity.toDto
+import com.example.orderingfood.data.room.entity.toEntity
 import com.example.orderingfood.domain.dto.Categories
 import com.example.orderingfood.domain.dto.Dish
 import com.example.orderingfood.domain.repository.Repository
@@ -9,48 +13,55 @@ import javax.inject.Inject
 
 
 class RepositoryImpl
-@Inject constructor(private val apiService: ApiServiceInterface) : Repository {
+@Inject constructor(
+    private val localDataSource: LocalDataSource,
+    private val remoteDataSource: RemoveDataSource
+) : Repository {
     private val cartItems = mutableListOf<Pair<Dish, Int>>()
     private val cachedDishes: MutableMap<Int, Dish> = HashMap()
     private var cachedDishList: List<Dish> = emptyList()
-    override suspend fun getCategories(): List<Categories> {
+    override suspend fun getCategories(): Result<List<Categories>> {
+        val localCategories = localDataSource.getCategories()
+        Log.d("RepositoryImpl", "Local categories: $localCategories")
+        if (localCategories.isNotEmpty()) {
+            return Result.success(localCategories.toDto())
+        }
         return try {
-            val response = apiService.getCategories()
-            if (response.isSuccessful) {
-                val categories = response.body()!!.сategories
-                Log.d("CategoryList", "Loaded categories: $categories")
-                categories
-            } else {
-                emptyList()
-            }
+            val remoteCategories = remoteDataSource.getCategories()
+            localDataSource.insertCategoriesToBd(remoteCategories.toEntity())
+            Log.d("RepositoryImpl", "Remote categories: $remoteCategories")
+            Result.success(remoteCategories)
         } catch (e: Exception) {
-            emptyList()
+            Log.e("RepositoryImpl", "Error loading categories: ${e.message}", e)
+            Result.failure(exception = e)
+
         }
     }
 
-    override suspend fun getDishes(): List<Dish> {
+    override suspend fun getDishes(): Result<List<Dish>> {
+        val localDishes = localDataSource.getAllDishes()
+        Log.d("RepositoryImpl", "Local dishes: $localDishes")
+        if (localDishes.isNotEmpty()) {
+            return Result.success(localDishes.toDto())
+        }
         return try {
-            val response = apiService.getDishes()
-            if (response.isSuccessful) {
-                cachedDishList = response.body()?.dishes ?: emptyList()
-                Log.d("RepositoryImpl", "Dishes: $cachedDishList")
-                cachedDishes.clear()
-                cachedDishList.forEach { dish ->
-                    cachedDishes[dish.id] = dish
-                }
-                cachedDishList
-            } else {
-                Log.d("RepositoryImpl", "Unsuccessful response: ${response.code()}")
-                emptyList()
-            }
+            val remoteDishes = remoteDataSource.getDishes()
+            localDataSource.insertDishesToDb(remoteDishes.toEntity())
+            Log.d("RepositoryImpl", "Remote dishes: $remoteDishes")
+            Result.success(remoteDishes)
         } catch (e: Exception) {
-            Log.d("RepositoryImpl", "Exception: ${e.message}")
-            emptyList()
+            Log.e("RepositoryImpl", "Error loading dishes: ${e.message}", e)
+            Result.failure(exception = e)
         }
     }
 
-    override suspend fun getDishesById(dishId: Int): Dish? {
-        return cachedDishes[dishId]
+    override suspend fun getDishesById(dishId: Int): DishesEntity? {
+        val liveData = localDataSource.getDishesById(dishId)
+        return liveData.value
+    }
+
+    override suspend fun getDishesByTag(tag: List<String>): List<DishesEntity> {
+        return localDataSource.detDishesByTag(tag)
     }
 
 
@@ -98,6 +109,5 @@ class RepositoryImpl
     override suspend fun getCartItems(): List<Pair<Dish, Int>> {
         return cartItems.toList()
     }
-
 
 }

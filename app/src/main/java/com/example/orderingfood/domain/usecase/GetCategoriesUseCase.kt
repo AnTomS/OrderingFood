@@ -6,7 +6,7 @@ import com.example.orderingfood.domain.repository.Repository
 class GetCategoriesUseCase(
     private val repository: Repository
 ) {
-    suspend fun execute(): List<Categories>? {
+    suspend fun execute(): Result<List<Categories>>? {
         return repository.getCategories()
     }
 }

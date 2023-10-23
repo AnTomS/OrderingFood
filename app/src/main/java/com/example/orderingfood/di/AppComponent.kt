@@ -1,14 +1,12 @@
 package com.example.orderingfood.di
 
 import android.util.Log
-import androidx.fragment.app.DialogFragment
 import com.example.orderingfood.MainActivity
 import com.example.orderingfood.data.repository.RepositoryImpl
-import com.example.orderingfood.data.room.dao.DishesDao
+import com.example.orderingfood.data.room.dao.OrderDao
 import com.example.orderingfood.presentation.ui.DishesDetailsDialogFragment
 import com.example.orderingfood.presentation.ui.categories.MainFragment
 import com.example.orderingfood.presentation.ui.dishes.DishesFragment
-import com.example.orderingfood.presentation.ui.dishesdetails.DishesDetailsFragment
 import com.example.orderingfood.presentation.ui.shop.CartFragment
 
 import dagger.Component
@@ -44,7 +42,7 @@ interface AppComponent {
 
     fun provideRepositoryImpl(): RepositoryImpl
 
-    fun provideDishesDao(): DishesDao
+    fun provideDishesDao(): OrderDao
 
 
 }

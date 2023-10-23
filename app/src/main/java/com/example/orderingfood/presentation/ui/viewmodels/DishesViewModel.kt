@@ -12,8 +12,8 @@ import javax.inject.Inject
 
 class DishesViewModel @Inject constructor(private val repository: RepositoryImpl) : ViewModel() {
 
-    private val _dishes = MutableLiveData<List<Dish>?>()
-    val dishes: MutableLiveData<List<Dish>?> get() = _dishes
+    private val _dishes = MutableLiveData<Result<List<Dish>>>()
+    val dishes: MutableLiveData<Result<List<Dish>>> get() = _dishes
 
     init {
         Log.d("DishesViewModel", "DishesViewModel initialized")
@@ -26,6 +26,9 @@ class DishesViewModel @Inject constructor(private val repository: RepositoryImpl
                 _dishes.postValue(dishesList)
                 Log.d("DishesViewModel", "блюда успешно загружены: $dishesList")
             } catch (e: Exception) {
+                val errorResult =
+                    Result.failure<List<Dish>>(Exception("Ошибка при загрузке категорий: ${e.message}"))
+                _dishes.postValue(errorResult)
                 Log.d("DishesViewModel", "Ошибка при загрузке категорий: ${e.message}")
             }
 

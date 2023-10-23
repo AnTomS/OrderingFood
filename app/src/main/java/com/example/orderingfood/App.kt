@@ -19,7 +19,7 @@ class App : Application() {
         super.onCreate()
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule(this))
-            .dataModule(DataModule())
+            .dataModule(DataModule(this))
             .viewModelModule(ViewModelModule())
             .networkModule(NetworkModule())
             .build()

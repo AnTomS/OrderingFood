@@ -6,11 +6,6 @@ import com.example.orderingfood.domain.dto.Categories
 import com.example.orderingfood.domain.dto.Dish
 
 class RemoveDataSource(private val apiService: ApiServiceInterface) {
-
-    private val cartItems = mutableListOf<Pair<Dish, Int>>()
-    private val cachedDishes: MutableMap<Int, Dish> = HashMap()
-    private var cachedDishList: List<Dish> = emptyList()
-
     suspend fun getCategories(): List<Categories> {
         return try {
             val response = apiService.getCategories()
@@ -30,13 +25,8 @@ class RemoveDataSource(private val apiService: ApiServiceInterface) {
         return try {
             val response = apiService.getDishes()
             if (response.isSuccessful) {
-                cachedDishList = response.body()?.dishes ?: emptyList()
-                Log.d("RepositoryImpl", "Dishes: $cachedDishList")
-                cachedDishes.clear()
-                cachedDishList.forEach { dish ->
-                    cachedDishes[dish.id] = dish
-                }
-                cachedDishList
+                val dishes = response.body()?.dishes ?: emptyList()
+                dishes
             } else {
                 Log.d("RepositoryImpl", "Unsuccessful response: ${response.code()}")
                 emptyList()

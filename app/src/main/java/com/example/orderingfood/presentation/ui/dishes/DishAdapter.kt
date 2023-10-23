@@ -27,8 +27,8 @@ class DishAdapter(private val clickListener: OnDishClickListener) :
         holder.itemView.tag = dishes
     }
 
-    fun setDishes(dishes: List<Dish>) {
-        submitList(dishes)
+    fun setDishes(dishes: Result<List<Dish>>) {
+        submitList(dishes.getOrDefault(emptyList()))
     }
 
     interface OnDishClickListener {
