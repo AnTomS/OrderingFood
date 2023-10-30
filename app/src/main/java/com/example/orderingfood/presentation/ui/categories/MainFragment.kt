@@ -9,15 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.orderingfood.App
 import com.example.orderingfood.R
 import com.example.orderingfood.databinding.FragmentMainBinding
 import com.example.orderingfood.domain.dto.Categories
 import com.example.orderingfood.presentation.ui.viewmodels.CategoriesViewModel
-import com.google.android.material.internal.FlowLayout
-import org.intellij.lang.annotations.JdkConstants.BoxLayoutAxis
 import javax.inject.Inject
 
 

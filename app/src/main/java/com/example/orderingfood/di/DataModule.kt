@@ -4,7 +4,9 @@ import android.app.Application
 import androidx.room.Room
 import com.example.orderingfood.data.network.ApiServiceInterface
 import com.example.orderingfood.data.repository.RepositoryImpl
-import com.example.orderingfood.data.room.dao.DishesDao
+import com.example.orderingfood.data.repository.datasource.LocalDataSource
+import com.example.orderingfood.data.repository.datasource.RemoveDataSource
+import com.example.orderingfood.data.room.dao.OrderDao
 import com.example.orderingfood.data.room.db.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -21,8 +23,8 @@ class DataModule(application: Application) {
 
     @Provides
     @Singleton
-    fun provideDishesDao(): DishesDao {
-        return appDatabase.dishesDao()
+    fun provideDishesDao(): OrderDao {
+        return appDatabase.orderDao()
     }
 
     @Provides
@@ -36,6 +38,7 @@ class DataModule(application: Application) {
     fun provideRepositoryImpl(
         apiServiceInterface: ApiServiceInterface
     ): RepositoryImpl {
-        return RepositoryImpl(apiServiceInterface)
+        val orderDao: OrderDao = appDatabase.orderDao()
+        return RepositoryImpl(localDataSource = LocalDataSource(orderDao), remoteDataSource = RemoveDataSource(apiServiceInterface))
     }
 }

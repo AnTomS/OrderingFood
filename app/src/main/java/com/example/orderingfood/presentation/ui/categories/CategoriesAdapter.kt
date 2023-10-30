@@ -25,7 +25,8 @@ class CategoriesAdapter(val listenerCategory: OnClickCategory) :
         holder.itemView.tag = categories
     }
 
-    fun setCategories(categories: List<Categories>) {
+    fun setCategories(categoriesResult: Result<List<Categories>>) {
+        val categories = categoriesResult.getOrDefault(emptyList())
         submitList(categories)
     }
 

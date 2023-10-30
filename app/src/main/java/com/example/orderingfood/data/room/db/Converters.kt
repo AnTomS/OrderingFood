@@ -1,6 +1,8 @@
 package com.example.orderingfood.data.room.db
 
 import androidx.room.TypeConverter
+import com.example.orderingfood.data.room.entity.DishesEntity
+import com.example.orderingfood.domain.dto.Dish
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.Moshi
@@ -29,4 +31,10 @@ class Converters {
     fun toStringList(value: List<String>?): String {
         return listStringAdapter.toJson(value ?: emptyList())
     }
+
+    fun DishesEntity.toDish(): Dish {
+        return Dish(description, id, imageUrl, name, price, tegs, weight)
+    }
+
+
 }

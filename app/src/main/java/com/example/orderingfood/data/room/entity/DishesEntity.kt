@@ -10,8 +10,8 @@ import com.example.orderingfood.domain.dto.Dish
 @Entity
 class DishesEntity(
     @PrimaryKey(autoGenerate = true)
-    val description: String = "",
     val id: Int = 0,
+    val description: String = "",
     val imageUrl: String? = "",
     val name: String = "",
     val price: Int = 0,
@@ -25,8 +25,8 @@ class DishesEntity(
 
     companion object {
         fun fromDto(dto: Dish) = DishesEntity(
-            dto.description,
             dto.id,
+            dto.description,
             dto.imageUrl,
             dto.name,
             dto.price,
@@ -38,3 +38,4 @@ class DishesEntity(
 
 fun List<DishesEntity>.toDto(): List<Dish> = map(DishesEntity::toDto)
 fun List<Dish>.toEntity(): List<DishesEntity> = map(DishesEntity::fromDto)
+

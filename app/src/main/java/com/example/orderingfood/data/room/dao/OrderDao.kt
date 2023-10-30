@@ -5,24 +5,29 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.orderingfood.data.room.entity.CategoriesEntity
 import com.example.orderingfood.data.room.entity.DishesEntity
 
 
 @Dao
-interface DishesDao {
+interface OrderDao {
+
+    @Query("SELECT * FROM CategoriesEntity")
+    suspend fun getCategories(): List<CategoriesEntity>
 
     @Query("SELECT * FROM DishesEntity")
     suspend fun getAllDishes(): List<DishesEntity>
 
     @Query("SELECT * FROM DishesEntity WHERE id = :dishId")
-    suspend fun getDishesById(dishId: Int): LiveData<DishesEntity>
-
+    fun getDishesById(dishId: Int): LiveData<DishesEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDishes(dishes: List<DishesEntity>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCategories(categories: List<CategoriesEntity>)
 
     @Query("SELECT * FROM DishesEntity WHERE tegs = :tag")
-    suspend fun detDishesByTag(tag: List<String>): LiveData<List<DishesEntity>>
+    suspend fun detDishesByTag(tag: List<String>): List<DishesEntity>
 
 }

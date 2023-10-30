@@ -59,11 +59,12 @@ class DishesDetailsFragment : Fragment() {
 
     private fun loadDataForDish(id: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            val dish = dishesDetailsViewModel.loadDishById(id)
+            val entity = dishesDetailsViewModel.loadDishById(id)
             // Проверяем, что dish не null и заполняем макет данными
-            dish?.let {
+            entity?.let {
+                val dish = it.toDto()
                 withContext(Dispatchers.Main) {
-                    loadDishesDetails(it)
+                    loadDishesDetails(dish)
                 }
             }
         }

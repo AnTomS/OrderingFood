@@ -2,11 +2,14 @@ package com.example.orderingfood.data.room.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.orderingfood.data.room.dao.DishesDao
+import androidx.room.TypeConverters
+import com.example.orderingfood.data.room.dao.OrderDao
+import com.example.orderingfood.data.room.entity.CategoriesEntity
 import com.example.orderingfood.data.room.entity.DishesEntity
 
 
-@Database(entities = [DishesEntity::class], version = 1)
+@Database(entities = [DishesEntity::class, CategoriesEntity::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun dishesDao(): DishesDao
+    abstract fun orderDao(): OrderDao
 }
