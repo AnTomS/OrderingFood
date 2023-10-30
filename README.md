@@ -43,7 +43,7 @@
 
 
 https://github.com/AnTomS/OrderingFood/assets/101929803/4ae02316-6b39-439a-a2af-6c108d35da25
-<video width="200" height="500" src="[https://user-images.githubusercontent.com/126239/151127893-5c98ba8d-c431-4a25-bb1f-e0b33645a2b6.mp4](https://github.com/AnTomS/OrderingFood/assets/101929803/4ae02316-6b39-439a-a2af-6c108d35da25)"></video>
+<video width="200" height="500" src="https://github.com/AnTomS/OrderingFood/assets/101929803/4ae02316-6b39-439a-a2af-6c108d35da25"></video>
 
 
 
